@@ -1,0 +1,15 @@
+# --- Security ---
+config.py
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.venv
+env/
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db

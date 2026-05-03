@@ -1,0 +1,39 @@
+name: Financial Data Pipeline
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch: 
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3 
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Data Collection (Week 1)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
+        run: python week1_data_collection.py
+
+      - name: Run Preprocessing (Week 2)
+        run: python week2_data_cleaning.py
+
+      - name: Commit and Push Results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/ output/
+          git commit -m "Auto-update: Cleaned dataset $(date)" || echo "No changes to commit"
+          git push
