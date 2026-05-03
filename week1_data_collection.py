@@ -5,9 +5,20 @@
 import yfinance as yf
 import pandas as pd
 from fredapi import Fred
-from config import ALPHA_VANTAGE_KEY, FRED_API_KEY
 import requests
 import os
+
+ALPHA_VANTAGE_KEY = os.getenv("ALPHA_VANTAGE_KEY")
+FRED_API_KEY = os.getenv("FRED_API_KEY")
+
+if not ALPHA_VANTAGE_KEY or not FRED_API_KEY:
+    try:
+        from config import ALPHA_VANTAGE_KEY, FRED_API_KEY
+        print("Using keys from config.py")
+    except ImportError:
+        raise ValueError("API Keys not found! Please set them in GitHub Secrets or config.py")
+else:
+    print("Using keys from GitHub Secrets")
 
 # Define the timeframe for data collection
 START_DATE = "2018-01-01"
