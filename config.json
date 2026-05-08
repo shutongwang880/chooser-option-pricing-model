@@ -1,0 +1,23 @@
+{
+    "paper_benchmark": {
+      "S_paper": 156.7,
+      "r_paper": 0.0015,
+      "q_paper": 0.0233,
+      "sigma_paper": 0.282
+    },
+    "contract_terms": {
+      "X": 150.0,
+      "T1_years": 0.5,
+      "T2_years": 1.0
+    },
+    "simulation": {
+      "n_simulations": 100000,
+      "random_seed": 42
+    },
+    "data_columns": {
+      "S_column": "JPM_Close",
+      "r_column": "Treasury_3M",
+      "q_column": "div_yield",
+      "sigma_column": "rolling_vol_21"
+    }
+  }
