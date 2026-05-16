@@ -4,3 +4,4 @@ yfinance
 fredapi
 requests
 scipy
+matplotlib

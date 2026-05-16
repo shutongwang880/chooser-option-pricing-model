@@ -1,0 +1,57 @@
+{
+  "instrument": {
+    "description": "Yahoo OCC last/close for listed call (CME transaction proxy if course allows).",
+    "occ_symbol": "JPM260522C00320000",
+    "strike": 320.0,
+    "expiration": "2026-05-22"
+  },
+  "vanilla_bs_call_vs_market": {
+    "overall": {
+      "MAE": 0.5214281541227824,
+      "RMSE": 0.6041850565552243,
+      "n": 23
+    },
+    "by_VIX_regime": {
+      "high_VIX": {
+        "MAE": 0.3360908759125654,
+        "RMSE": 0.430159493168715,
+        "n": 6
+      },
+      "rest": {
+        "MAE": 0.5868413111381531,
+        "RMSE": 0.6546524565890673,
+        "n": 17
+      },
+      "VIX_threshold": 18.75999927520752
+    },
+    "by_sentiment_terciles": {
+      "low_sentiment_tercile": {
+        "MAE": 0.6702261484992835,
+        "RMSE": 0.7442797620864791,
+        "n": 8
+      },
+      "mid_sentiment_tercile": {
+        "MAE": 0.5034018733037454,
+        "RMSE": 0.5536098004957958,
+        "n": 7
+      },
+      "high_sentiment_tercile": {
+        "MAE": 0.3884031554629386,
+        "RMSE": 0.4768260697754077,
+        "n": 8
+      }
+    }
+  },
+  "chooser_mc_benchmark_scalar": {
+    "paper_strike_X": 150.0,
+    "T1_years": 0.5,
+    "T2_years": 1.0,
+    "at_median_panel_inputs": 159.21531598313757,
+    "at_median_panel_inputs_strike_equals_listed": 46.00219568518911,
+    "n_sims": 40000
+  },
+  "notes": [
+    "MAE/RMSE use European BS call vs the same strike/expiry as the Yahoo series.",
+    "Chooser price is not the same object as a vanilla call; scalar MC is for BSM-style baseline documentation only."
+  ]
+}

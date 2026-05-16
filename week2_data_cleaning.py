@@ -115,10 +115,10 @@ print(f" Final dataset shape: {data.shape}")
 # ============================================================
 print("\n[5] Saving cleaned dataset...")
 
-os.makedirs("output", exist_ok=True)
-data.to_csv("output/cleaned_dataset.csv", index=False)
+os.makedirs("data", exist_ok=True)
+data.to_csv("data/cleaned_dataset.csv", index=False)
 
-print(" Saved to output/cleaned_dataset.csv")
+print(" Saved to data/cleaned_dataset.csv")
 
 
 # ============================================================
