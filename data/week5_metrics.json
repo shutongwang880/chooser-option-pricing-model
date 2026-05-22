@@ -1,0 +1,184 @@
+{
+  "approach1_vol_then_bsm": {
+    "volatility_target": "next_row_rolling_vol_21",
+    "split": {
+      "n_total": 1627,
+      "n_train": 1138,
+      "n_val": 244,
+      "n_test": 245,
+      "train_date_end": "2022-10-21 00:00:00",
+      "val_date_end": "2023-10-12 00:00:00",
+      "test_date_end": "2024-10-09 00:00:00",
+      "split": "chronological_70_15_15"
+    },
+    "model_selection": {
+      "val_metrics_by_model": {
+        "random_forest": {
+          "MAE": 0.0006257078777977079,
+          "RMSE": 0.0010069304434876883,
+          "n": 244
+        },
+        "sklearn_gbdt": {
+          "MAE": 0.001196308704048672,
+          "RMSE": 0.0014584513639635203,
+          "n": 244
+        },
+        "xgboost": {
+          "MAE": 0.0017680642735194232,
+          "RMSE": 0.0021166243896015165,
+          "n": 244
+        }
+      },
+      "selected": "random_forest"
+    },
+    "test_metrics_by_model": {
+      "persistence_baseline": {
+        "MAE": 0.00044767559695700637,
+        "RMSE": 0.0011548781810466196,
+        "n": 245
+      },
+      "random_forest": {
+        "MAE": 0.000607582571026998,
+        "RMSE": 0.001210740338194355,
+        "n": 245
+      },
+      "sklearn_gbdt": {
+        "MAE": 0.0007251873679907106,
+        "RMSE": 0.0012789101078358191,
+        "n": 245
+      },
+      "xgboost": {
+        "MAE": 0.000824155027730555,
+        "RMSE": 0.0012958595723342999,
+        "n": 245
+      }
+    },
+    "rolling_vol_test_metrics": {
+      "MAE": 0.000607582571026998,
+      "RMSE": 0.001210740338194355,
+      "n": 245
+    },
+    "panel_bs_vs_market_using_ml_vol": {
+      "MAE": 0.4262062667399287,
+      "RMSE": 0.5459560911877782,
+      "n": 23
+    },
+    "models_tried_vol": [
+      "random_forest",
+      "sklearn_gbdt",
+      "xgboost"
+    ],
+    "xgboost_available": true,
+    "lstm_vol": {
+      "skipped": true,
+      "reason": "disabled via --no-lstm"
+    }
+  },
+  "approach2_end_to_end_price": {
+    "teacher_target": "bsm_european_call_same_day_realized_vol",
+    "strike": 320.0,
+    "expiration": "2026-05-22",
+    "split": {
+      "n_total": 1628,
+      "n_train": 1139,
+      "n_val": 244,
+      "n_test": 245,
+      "train_date_end": "2022-10-24 00:00:00",
+      "val_date_end": "2023-10-13 00:00:00",
+      "test_date_end": "2024-10-10 00:00:00",
+      "split": "chronological_70_15_15"
+    },
+    "model_selection": {
+      "val_metrics_by_model": {
+        "linear_regression": {
+          "MAE": 8.26339223678638,
+          "RMSE": 8.518212130951392,
+          "n": 244
+        },
+        "hist_gbdt": {
+          "MAE": 1.229338980596852,
+          "RMSE": 1.465149580446302,
+          "n": 244
+        },
+        "mlp_nn": {
+          "MAE": 1.5732854900351376,
+          "RMSE": 2.0830010748555883,
+          "n": 244
+        }
+      },
+      "selected": "hist_gbdt"
+    },
+    "test_metrics_by_model": {
+      "linear_regression": {
+        "MAE": 3.3483490141064123,
+        "RMSE": 3.772553108243718,
+        "n": 245
+      },
+      "hist_gbdt": {
+        "MAE": 1.5167450677991647,
+        "RMSE": 2.2406116658473674,
+        "n": 245
+      },
+      "mlp_nn": {
+        "MAE": 2.0216625096831513,
+        "RMSE": 2.847618193969871,
+        "n": 245
+      }
+    },
+    "daily_teacher_test_metrics": {
+      "MAE": 1.5167450677991647,
+      "RMSE": 2.2406116658473674,
+      "n": 245
+    },
+    "panel_direct_price_vs_market": {
+      "MAE": 3.703769789341035,
+      "RMSE": 4.172776698880653,
+      "n": 23
+    },
+    "panel_only_market_supervised": {
+      "note": "Very small sample; illustrative only.",
+      "split": {
+        "n_total": 23,
+        "n_train": 16,
+        "n_val": 3,
+        "n_test": 4,
+        "train_date_end": "2026-05-04 00:00:00",
+        "val_date_end": "2026-05-07 00:00:00",
+        "test_date_end": "2026-05-13 00:00:00",
+        "split": "chronological_70_15_15"
+      },
+      "selected": "hist_gbdt",
+      "val_metrics_by_model": {
+        "linear_regression": {
+          "MAE": 1.7259903381272084,
+          "RMSE": 1.7897755158198618,
+          "n": 3
+        },
+        "hist_gbdt": {
+          "MAE": 1.6523810398010979,
+          "RMSE": 1.9837636908395875,
+          "n": 3
+        },
+        "mlp_nn": {
+          "MAE": 1.723433982059665,
+          "RMSE": 1.7885243954681385,
+          "n": 3
+        }
+      },
+      "test_metrics_vs_market": {
+        "MAE": 3.763750046491623,
+        "RMSE": 3.768969774908636,
+        "n": 4
+      }
+    },
+    "models_tried_price": [
+      "linear_regression",
+      "hist_gbdt",
+      "mlp_nn"
+    ]
+  },
+  "notes": [
+    "Panel dates are after cleaned_dataset; panel metrics are out-of-sample relative to training calendar.",
+    "Approach 2 trains on BSM teacher prices on a dense calendar without same-day realized vol as an input feature."
+  ]
+}

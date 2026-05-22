@@ -1,0 +1,7 @@
+# Optional: enables the Week 5 LSTM volatility experiment in week5_run_ml.py
+# Install: pip install -r requirements-optional-lstm.txt
+#
+# Apple Silicon (arm64) and Intel macOS: stock tensorflow wheel is usually sufficient.
+# If install fails, see https://www.tensorflow.org/install
+
+tensorflow>=2.15,<2.19

@@ -5,3 +5,5 @@ fredapi
 requests
 scipy
 matplotlib
+scikit-learn
+xgboost
